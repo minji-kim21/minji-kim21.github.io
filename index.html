@@ -168,6 +168,37 @@ figcaption b { font-family: var(--mono); font-weight: 500; color: var(--ink); ma
 .fig-grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .fig-grid .wide { grid-column: 1 / -1; }
 
+
+/* flog account book */
+.ab { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 32px; align-items: start; }
+.phone.big img { height: auto; object-fit: initial; }
+.ab-steps { display: grid; gap: 10px; }
+.ab-step { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 18px; align-items: center; padding: 14px; border: 1.5px solid var(--ink); border-radius: 12px; background: var(--paper); }
+.ab-step .lbl b { display: block; font-family: var(--display); font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; }
+.ab-step .lbl i { display: block; font-style: normal; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.ab-step .lbl span { display: block; margin-top: 6px; font-size: 0.86rem; color: var(--muted); line-height: 1.4; }
+.ab-step .shot { max-width: 420px; }
+.ab-arrow { text-align: center; font-family: var(--mono); color: var(--muted); line-height: 1; }
+.phones.slides > figure { width: min(430px, 80vw); }
+.stack-fig { background: #f7f7f5; border-radius: 10px; border: 1px solid var(--line); padding: 8px; }
+
+
+/* troubleshooting write-up */
+.case-title { font-family: var(--display); font-weight: 800; font-size: clamp(1.25rem, 2.6vw, 1.7rem); line-height: 1.2; margin: 0 0 16px; }
+.trace { display: grid; gap: 10px; margin-bottom: 20px; }
+.trace-row { display: grid; grid-template-columns: 74px minmax(0, 1fr) 22px minmax(0, 1fr) 22px minmax(0, 1fr); gap: 8px; align-items: stretch; }
+.trace-row .tag { align-self: center; font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.trace-row .n { padding: 10px 12px; border: 1.5px solid var(--ink); border-radius: 8px; background: var(--paper); font-size: 0.86rem; line-height: 1.35; }
+.trace-row .n small { display: block; font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 3px; }
+.trace-row .n.bad { border-style: dashed; border-color: rgb(var(--neg)); }
+.trace-row .n.ok { background: var(--marker); color: var(--marker-ink); }
+.trace-row .ar { align-self: center; text-align: center; font-family: var(--mono); color: var(--muted); }
+.case-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.case-cols h5 { margin: 0 0 8px; font-family: var(--body); font-weight: 600; font-size: 0.95rem; color: var(--link); }
+.case-cols ul li { position: relative; padding-left: 16px; font-size: 0.92rem; line-height: 1.5; }
+.case-cols ul li + li { margin-top: 7px; }
+.case-cols ul li::before { content: ""; position: absolute; left: 2px; top: 0.6em; width: 6px; height: 6px; border-radius: 50%; background: var(--ink); }
+
 /* schematics */
 .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; counter-reset: s; }
 .steps.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -239,6 +270,12 @@ footer .eq { margin-top: 40px; }
   .facts div:nth-child(2) { border-right: 1px solid var(--line); }
   .facts div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .about, .p-main, .p-main.flip { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .ab { grid-template-columns: 200px minmax(0, 1fr); gap: 20px; }
+  .case-cols { grid-template-columns: minmax(0, 1fr); }
+  .trace-row { grid-template-columns: minmax(0, 1fr); }
+  .trace-row .ar { transform: rotate(90deg); }
+  .trace-row .tag { margin-top: 4px; }
+  .ab-step { grid-template-columns: minmax(0, 1fr); gap: 10px; }
   .job { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .skills, .edu { grid-template-columns: minmax(0, 1fr); }
   .steps, .steps.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -250,6 +287,8 @@ footer .eq { margin-top: 40px; }
   .p-top, .p-main, .p-block { padding-left: 16px; padding-right: 16px; }
   .project { box-shadow: 4px 4px 0 var(--ink); }
   .fig-grid, .fig-grid.two, .fig-grid.four, .steps, .steps.three { grid-template-columns: minmax(0, 1fr); }
+  .ab { grid-template-columns: minmax(0, 1fr); }
+  .ab .phone.big { max-width: 240px; margin: 0 auto; }
   .phones > figure { width: 178px; }
   .phone img { height: 340px; }
   .heat { grid-template-columns: 74px repeat(4, minmax(0, 1fr)); gap: 3px; }
@@ -297,7 +336,9 @@ footer .eq { margin-top: 40px; }
     <div class="sec-head"><h2>About</h2><span class="mono">Who I am</span></div>
     <div class="about">
       <div>
-        <p>I am a Mathematical Physics student at the <a href="https://uwaterloo.ca/">University of Waterloo</a>, interested in <b>backend engineering</b>, fullstack development, systems design, and all things AI.</p>
+        <p>I am a Mathematical Physics student at the <a href="https://uwaterloo.ca/">University of Waterloo</a>, interested in <b>backend engineering</b>, systems design, quantitative finance, all things AI, and machine learning.</p>
+        <p>I like owning a whole piece of a project, from the database design to the backend, the screen and the deployment, and working with teammates through Git branches and pull requests.</p>
+        <p>Before software I was a manager at a ramen restaurant. It taught me leadership, how to work well in a team, and how to listen closely to what customers ask for.</p>
       </div>
       <div class="side">
         <div class="tech" id="skills">
@@ -335,40 +376,114 @@ footer .eq { margin-top: 40px; }
       <button class="cover" data-zoom="images/flog-cover.jpg" aria-label="Enlarge FLOG cover slide"><img src="images/flog-cover.jpg" alt="FLOG cover slide: green frog mascot over a collage of app screens, titled FLOG, a daily logging and sharing platform"></button>
       <div class="p-main">
         <ul class="bullets">
-          <li>Owned the <b>Account Book</b> domain end to end in a team of 5, from ERD/DDL design to an MVP deployed with Docker.</li>
+          <li>Owned the <b>Account Book</b> domain end to end in a team of 5, from <b>ERD/DDL design</b> to an MVP deployed with <b>Docker</b>.</li>
           <li>Implemented <b>JWT-based login</b> and a three-level transaction view (monthly → daily → detail) that shows details inline.</li>
           <li>Resolved a JWT authentication failure that blocked every login-required feature: logged the header the backend filter received, found the <code>Bearer</code> prefix missing, and fixed it for all requests with an <b>axios interceptor</b>.</li>
           <li>Built <b>receipt scanning</b> (OCR prefills date, amount and merchant) and OpenAI API natural-language entry and search of spending history.</li>
         </ul>
-        <div>
-          <div class="phones" id="flog-phones" tabindex="0" aria-label="FLOG app screens, scroll sideways">
-            <figure>
-              <button class="phone" data-zoom="images/flog-home.jpg" aria-label="Enlarge FLOG home screen"><img src="images/flog-home.jpg" alt="FLOG home screen with today's exercise, meals, goals, spending and schedule summary" loading="lazy"></button>
-              <figcaption><b>Fig. 1</b>Home screen with the spending summary</figcaption>
-            </figure>
-            <figure>
-              <button class="phone" data-zoom="images/flog-calendar.jpg" aria-label="Enlarge FLOG calendar screen"><img src="images/flog-calendar.jpg" alt="FLOG calendar screen with a monthly view and a day's log" loading="lazy"></button>
-              <figcaption><b>Fig. 2</b>Calendar and daily record</figcaption>
-            </figure>
-            <figure>
-              <button class="phone" data-zoom="images/flog-edit.jpg" aria-label="Enlarge FLOG record editing screen"><img src="images/flog-edit.jpg" alt="FLOG screen for editing a record" loading="lazy"></button>
-              <figcaption><b>Fig. 3</b>Editing a record</figcaption>
-            </figure>
-            <figure>
-              <button class="phone" data-zoom="images/flog-points.jpg" aria-label="Enlarge FLOG point charging screen"><img src="images/flog-points.jpg" alt="FLOG screen for charging points with amount choices and a payment summary" loading="lazy"></button>
-              <figcaption><b>Fig. 4</b>Charging points</figcaption>
-            </figure>
+        <figure>
+          <button class="shot stack-fig" data-zoom="images/flog-stack.jpg" aria-label="Enlarge tech stack"><img src="images/flog-stack.jpg" alt="Tech stack icons: JavaScript, Java, React, HTML, Spring, CSS, AWS, Docker, MariaDB, GitHub, IntelliJ and VS Code" loading="lazy"></button>
+          <figcaption><b>Stack</b>JavaScript, Java, React, Spring, HTML/CSS, AWS, Docker, MariaDB, GitHub, IntelliJ, VS Code</figcaption>
+        </figure>
+      </div>
+
+      <div class="p-block">
+        <h4>Troubleshooting <span class="badge built">Problem → Solution → Result</span></h4>
+        <p class="case-title">Fixed a JWT authentication failure that blocked every login-required feature</p>
+        <div class="trace" role="group" aria-label="Request path before and after the fix">
+          <div class="trace-row">
+            <span class="tag">Before</span>
+            <div class="n"><small>React · axios</small>Sends <code>Authorization: &lt;token&gt;</code></div>
+            <span class="ar" aria-hidden="true">→</span>
+            <div class="n"><small>Spring Security filter</small>Expects <code>Bearer &lt;token&gt;</code></div>
+            <span class="ar" aria-hidden="true">→</span>
+            <div class="n bad"><small>Result</small>Data access fails on every login-required API</div>
           </div>
-          <div class="scroll-btns"><button type="button" data-dir="-1" aria-label="Previous screens">←</button><button type="button" data-dir="1" aria-label="Next screens">→</button></div>
+          <div class="trace-row">
+            <span class="tag">After</span>
+            <div class="n"><small>axios interceptor</small>Adds the <code>Bearer </code> prefix to every request</div>
+            <span class="ar" aria-hidden="true">→</span>
+            <div class="n"><small>Spring Security filter</small>Header matches the expected format</div>
+            <span class="ar" aria-hidden="true">→</span>
+            <div class="n ok"><small>Result</small>All authenticated APIs work again</div>
+          </div>
+        </div>
+        <div class="case-cols">
+          <div>
+            <h5>Problem and cause</h5>
+            <ul>
+              <li>After login, the JWT was sent in the request header, yet data access still failed.</li>
+              <li>Cause: the header format sent by axios did not match the format the Spring Security filter expected.</li>
+              <li>Impact: every feature that needs login stopped working, so users could not use the service at all.</li>
+            </ul>
+          </div>
+          <div>
+            <h5>How I solved it</h5>
+            <ul>
+              <li>Checked the format of the <code>Authorization</code> header in the frontend request.</li>
+              <li>Added temporary logging to the Spring Security filter chain to print the raw header the server received.</li>
+              <li>Compared both sides and found the <code>Bearer</code> prefix missing, then confirmed in the developer tools that only the token value was sent.</li>
+              <li>Added an axios interceptor that puts the prefix on every request.</li>
+            </ul>
+          </div>
+          <div>
+            <h5>Result</h5>
+            <ul>
+              <li>All APIs that require authentication worked again, restoring the core features.</li>
+              <li>A standard auth header makes later API additions easier.</li>
+              <li>Lesson: define the frontend and backend contract clearly and follow it.</li>
+            </ul>
+          </div>
         </div>
       </div>
+
       <div class="p-block">
-        <h4>Account Book <span class="badge">Schematic</span></h4>
-        <div class="steps three">
-          <div class="step"><b>Monthly</b><span>Spending for the month at a glance</span><div class="skel"><i></i><i></i><i></i></div></div>
-          <div class="step"><b>Daily</b><span>Pick a day to see its entries</span><div class="skel"><i></i><i></i><i></i></div></div>
-          <div class="step"><b>Detail</b><span>Opens inline, with receipt scanning to prefill date, amount and merchant</span><div class="skel"><i></i><i></i><i></i></div></div>
+        <h4>Account Book <span class="badge built">Monthly → Daily → Detail</span></h4>
+        <div class="ab">
+          <figure>
+            <button class="phone big" data-zoom="images/ab-screen.jpg" aria-label="Enlarge Account Book screen"><img src="images/ab-screen.jpg" alt="FLOG Account Book screen: monthly totals, a calendar with daily amounts, and the selected day's transactions" loading="lazy"></button>
+            <figcaption><b>Fig. 1</b>The Account Book screen</figcaption>
+          </figure>
+          <div class="ab-steps">
+            <div class="ab-step">
+              <div class="lbl"><i>Level 1</i><b>Monthly</b><span>Income, spending, balance and progress toward the monthly savings goal</span></div>
+              <button class="shot" data-zoom="images/ab-monthly.jpg" aria-label="Enlarge monthly summary"><img src="images/ab-monthly.jpg" alt="Monthly summary: income, spending, balance and savings progress with a frog face" loading="lazy"></button>
+            </div>
+            <div class="ab-arrow" aria-hidden="true">↓</div>
+            <div class="ab-step">
+              <div class="lbl"><i>Level 2</i><b>Daily</b><span>Each calendar day shows its income and spending, with colors for weekends and the selected day</span></div>
+              <button class="shot" data-zoom="images/ab-daily.jpg" aria-label="Enlarge daily calendar"><img src="images/ab-daily.jpg" alt="Calendar with income and spending amounts under each day" loading="lazy"></button>
+            </div>
+            <div class="ab-arrow" aria-hidden="true">↓</div>
+            <div class="ab-step">
+              <div class="lbl"><i>Level 3</i><b>Detail</b><span>Choosing a day lists its transactions right below, with no extra page</span></div>
+              <button class="shot" data-zoom="images/ab-detail.jpg" aria-label="Enlarge transaction detail"><img src="images/ab-detail.jpg" alt="Transaction list for the selected day with icons, categories and amounts" loading="lazy"></button>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="p-block">
+        <h4>Account Book design slides <span class="badge">8 slides</span></h4>
+        <div class="phones slides" id="flog-slides" tabindex="0" aria-label="Account Book slides, scroll sideways">
+          <figure><button class="shot" data-zoom="images/ab-slide-browse.jpg" aria-label="Enlarge slide"><img src="images/ab-slide-browse.jpg" alt="Slide: intuitive browsing of spending, with monthly, daily and detail levels" loading="lazy"></button><figcaption><b>01</b>Browsing spending</figcaption></figure>
+          <figure><button class="shot" data-zoom="images/ab-slide-search.jpg" aria-label="Enlarge slide"><img src="images/ab-slide-search.jpg" alt="Slide: instant search over transactions" loading="lazy"></button><figcaption><b>02</b>Instant search</figcaption></figure>
+          <figure><button class="shot" data-zoom="images/ab-slide-patterns.jpg" aria-label="Enlarge slide"><img src="images/ab-slide-patterns.jpg" alt="Slide: spending pattern charts by category" loading="lazy"></button><figcaption><b>03</b>Spending patterns</figcaption></figure>
+          <figure><button class="shot" data-zoom="images/ab-slide-input.jpg" aria-label="Enlarge slide"><img src="images/ab-slide-input.jpg" alt="Slide: step-by-step entry flow with repeat registration" loading="lazy"></button><figcaption><b>04</b>Entry flow and repeats</figcaption></figure>
+          <figure><button class="shot" data-zoom="images/ab-slide-receipt.jpg" aria-label="Enlarge slide"><img src="images/ab-slide-receipt.jpg" alt="Slide: receipt scanning with OCR" loading="lazy"></button><figcaption><b>05</b>Receipt scanning (OCR)</figcaption></figure>
+          <figure><button class="shot" data-zoom="images/ab-slide-goal.jpg" aria-label="Enlarge slide"><img src="images/ab-slide-goal.jpg" alt="Slide: monthly savings goal with progress levels" loading="lazy"></button><figcaption><b>06</b>Savings goal</figcaption></figure>
+          <figure><button class="shot" data-zoom="images/ab-slide-categories.jpg" aria-label="Enlarge slide"><img src="images/ab-slide-categories.jpg" alt="Slide: custom categories with icon selection" loading="lazy"></button><figcaption><b>07</b>Custom categories</figcaption></figure>
+          <figure><button class="shot" data-zoom="images/ab-slide-ai.jpg" aria-label="Enlarge slide"><img src="images/ab-slide-ai.jpg" alt="Slide: AI assistant for natural-language entry and search" loading="lazy"></button><figcaption><b>08</b>AI smart account book</figcaption></figure>
+        </div>
+        <div class="scroll-btns"><button type="button" data-target="flog-slides" data-dir="-1" aria-label="Previous slides">←</button><button type="button" data-target="flog-slides" data-dir="1" aria-label="Next slides">→</button></div>
+      </div>
+
+      <div class="p-block">
+        <h4>Data model <span class="badge">Team ERD</span></h4>
+        <figure style="max-width:560px">
+          <button class="shot" data-zoom="images/flog-erd.jpg" aria-label="Enlarge ERD"><img src="images/flog-erd.jpg" alt="Entity relationship diagram of the FLOG database, with tables grouped by domain in different colors" loading="lazy"></button>
+          <figcaption><b>Fig. 2</b>ERD for the five domains: account book, meals, exercise, challenges and schedule</figcaption>
+        </figure>
       </div>
     </article>
 
@@ -389,7 +504,7 @@ footer .eq { margin-top: 40px; }
         <div>
           <figure>
             <button class="shot" data-zoom="images/dorm-admin.jpg" aria-label="Enlarge admin dashboard"><img src="images/dorm-admin.jpg" alt="Administrator dashboard with a side menu for buildings, rooms, schedules, dormitory fees, applications, selection and room assignment" loading="lazy"></button>
-            <figcaption><b>Fig. 5</b>Administrator dashboard menu: buildings, rooms, schedules, fees, applications, selection and room assignment</figcaption>
+            <figcaption><b>Fig. 3</b>Administrator dashboard menu: buildings, rooms, schedules, fees, applications, selection and room assignment</figcaption>
           </figure>
         </div>
         <ul class="bullets">
@@ -413,15 +528,15 @@ footer .eq { margin-top: 40px; }
         <div class="fig-grid">
           <figure>
             <button class="shot" data-zoom="images/dorm-apply.jpg" aria-label="Enlarge application form storyboard"><img src="images/dorm-apply.jpg" alt="Hand-drawn planning storyboard of the dormitory application form" loading="lazy"></button>
-            <figcaption><b>Fig. 6</b>Plan: application form</figcaption>
+            <figcaption><b>Fig. 4</b>Plan: application form</figcaption>
           </figure>
           <figure>
             <button class="shot" data-zoom="images/dorm-assign.jpg" aria-label="Enlarge room assignment storyboard"><img src="images/dorm-assign.jpg" alt="Hand-drawn planning storyboard of the room assignment screen" loading="lazy"></button>
-            <figcaption><b>Fig. 7</b>Plan: room assignment</figcaption>
+            <figcaption><b>Fig. 5</b>Plan: room assignment</figcaption>
           </figure>
           <figure>
             <button class="shot" data-zoom="images/dorm-room.jpg" aria-label="Enlarge room introduction storyboard"><img src="images/dorm-room.jpg" alt="Hand-drawn planning storyboard of the room introduction page" loading="lazy"></button>
-            <figcaption><b>Fig. 8</b>Plan: room introduction page</figcaption>
+            <figcaption><b>Fig. 6</b>Plan: room introduction page</figcaption>
           </figure>
         </div>
       </div>
@@ -509,9 +624,9 @@ footer .eq { margin-top: 40px; }
         <details class="more">
           <summary>All variables per step (blue marks the strong ones)</summary>
           <div class="fig-grid two" style="grid-template-columns:minmax(0,1fr);margin-top:10px">
-            <figure><button class="shot" data-zoom="images/fig-oxidation.jpg" aria-label="Enlarge oxidation figure"><img src="images/fig-oxidation.jpg" alt="Oxidation scatterplots for four process variables, strong ones in blue" loading="lazy"></button><figcaption><b>Fig. 9</b>Oxidation</figcaption></figure>
-            <figure><button class="shot" data-zoom="images/fig-etching.jpg" aria-label="Enlarge etching figure"><img src="images/fig-etching.jpg" alt="Etching scatterplots for four process variables, strong ones in blue" loading="lazy"></button><figcaption><b>Fig. 10</b>Etching</figcaption></figure>
-            <figure><button class="shot" data-zoom="images/fig-deposition.jpg" aria-label="Enlarge deposition figure"><img src="images/fig-deposition.jpg" alt="Deposition scatterplots for four process variables, strong ones in blue" loading="lazy"></button><figcaption><b>Fig. 11</b>Deposition</figcaption></figure>
+            <figure><button class="shot" data-zoom="images/fig-oxidation.jpg" aria-label="Enlarge oxidation figure"><img src="images/fig-oxidation.jpg" alt="Oxidation scatterplots for four process variables, strong ones in blue" loading="lazy"></button><figcaption><b>Fig. 7</b>Oxidation</figcaption></figure>
+            <figure><button class="shot" data-zoom="images/fig-etching.jpg" aria-label="Enlarge etching figure"><img src="images/fig-etching.jpg" alt="Etching scatterplots for four process variables, strong ones in blue" loading="lazy"></button><figcaption><b>Fig. 8</b>Etching</figcaption></figure>
+            <figure><button class="shot" data-zoom="images/fig-deposition.jpg" aria-label="Enlarge deposition figure"><img src="images/fig-deposition.jpg" alt="Deposition scatterplots for four process variables, strong ones in blue" loading="lazy"></button><figcaption><b>Fig. 9</b>Deposition</figcaption></figure>
           </div>
         </details>
       </div>
@@ -607,14 +722,16 @@ footer .eq { margin-top: 40px; }
   lb.addEventListener('click', closeLb);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
 
-  /* phone scroller */
-  var scroller = document.getElementById('flog-phones');
+  /* sideways scrollers */
   document.querySelectorAll('.scroll-btns button').forEach(function (btn) {
-    btn.addEventListener('click', function () { scroller.scrollBy({ left: Number(btn.getAttribute('data-dir')) * 226, behavior: 'smooth' }); });
+    var sc = document.getElementById(btn.getAttribute('data-target'));
+    btn.addEventListener('click', function () { sc.scrollBy({ left: Number(btn.getAttribute('data-dir')) * sc.clientWidth * 0.8, behavior: 'smooth' }); });
   });
-  scroller.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowRight') { scroller.scrollBy({ left: 226, behavior: 'smooth' }); e.preventDefault(); }
-    if (e.key === 'ArrowLeft') { scroller.scrollBy({ left: -226, behavior: 'smooth' }); e.preventDefault(); }
+  document.querySelectorAll('.phones').forEach(function (sc) {
+    sc.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { sc.scrollBy({ left: sc.clientWidth * 0.8, behavior: 'smooth' }); e.preventDefault(); }
+      if (e.key === 'ArrowLeft') { sc.scrollBy({ left: -sc.clientWidth * 0.8, behavior: 'smooth' }); e.preventDefault(); }
+    });
   });
 
   /* correlation heat table: r values printed on the analysis charts */
